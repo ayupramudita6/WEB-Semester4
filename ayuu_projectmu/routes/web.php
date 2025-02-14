@@ -1,5 +1,6 @@
 <?php
 
+// Acara 3
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -69,3 +70,66 @@ Route::get('user5/profile', function(){
     })->name('profile.user5');
 
 Route::get('user6/profile', [UserController::class, 'show'])->name('profile.user6');
+
+
+// Acara 4
+
+//generate route ke route bersama
+// Route::get('/user/{id}/profile', function ($id) {
+//     return view('profile', ['id' => $id]);
+// })->name('profile');
+
+Route::get('/redirect-profile', function () {
+    return redirect()->route('profile', ['id' => 1, 'photos' => 'yes']);
+});
+
+//memeriksa rute saat ini
+// Route::get('/user/{id}/profile', function ($id) {
+//     return view('profile', ['id' => $id]);
+// })->name('profile')->middleware('check.profile');
+Route::get('/user/{id}/profile', function ($id) {
+    return view('profile', ['id' => $id]);
+})->name('profile');
+
+//Middleware
+Route::middleware(['first', 'second'])->group(function () {
+    Route::get('/', function () {
+        //
+    });
+
+    Route::get('user/profile', function () {
+        //
+    });
+});
+
+//namespaces
+Route::namespace('Admin')->group(function (){
+    //
+});
+
+//subdomain routing
+Route::domain('{account}.myapp.com')->group(function (){
+    Route::get('user/{id}', function ($account, $id){
+        //
+    });
+});
+
+//route prefixes
+Route::domain('{account}.myapp.com')->group(function (){
+    Route::get('user', function (){
+        //
+    });
+});
+
+//route name prefixes
+Route::name('admin.')->group(function (){
+    Route::get('users', function (){
+        //
+    })->name('users');
+});
+
+//tambahan
+// Route::post('/user/{id}/profile/update', [ProfileController::class, 'update'])->name('profile.update');
+Route::match(['get', 'post'], '/user/{id}/profile/update', [ProfileController::class, 'update'])->name('profile.update');
+
+
