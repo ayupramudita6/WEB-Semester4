@@ -191,9 +191,12 @@ Route::match(['get', 'post'], '/user/{id}/profile/update', [ProfileController::c
 
 Route::get("/home", function(){
     return view("home");
+<<<<<<< HEAD
 });
 
 // acara 7
 Route::group(['namespace'=> 'App\Http\Controllers\Frontend'], function(){
     Route::resource('home1', HomeController::class);
+=======
+>>>>>>> 7f6c69bb3558b5b4a91942d7c1fc3fb012fa8c63
 });
