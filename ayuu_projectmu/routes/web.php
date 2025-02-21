@@ -1,7 +1,11 @@
 <?php
 
-// Acara 3
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\ManagementUserController;
+use Illuminate\Http\Request;
+
+// Acara 3
 
 Route::get('/', function () {
     return view('welcome');
@@ -133,3 +137,63 @@ Route::name('admin.')->group(function (){
 Route::match(['get', 'post'], '/user/{id}/profile/update', [ProfileController::class, 'update'])->name('profile.update');
 
 
+
+// Acara 5
+
+//memeriksa rute saat ini
+Route::get('/user8/{id}/profile', function ($id) {
+    return view('profile', ['id' => $id]);
+})->name('profile');
+
+//Middleware
+Route::middleware(['first', 'second'])->group(function () {
+    Route::get('/', function () {
+        //
+    });
+
+    Route::get('user9/profile', function () {
+        //
+    });
+});
+
+//namespaces
+Route::namespace('Admin')->group(function (){
+    //
+});
+
+
+//subdomain routing
+Route::domain('{account}.myapp.com')->group(function (){
+    Route::get('user10/{id}', function ($account, $id){
+        //
+    });
+});
+
+//route prefixes
+Route::domain('{account}.myapp.com')->group(function (){
+    Route::get('user11', function (){
+        //
+    });
+});
+
+//route name prefixes
+Route::name('admin.')->group(function (){
+    Route::get('users', function (){
+        //
+    })->name('users');
+});
+
+Route::get('/pengguna', [ManagementUserController::class, 'index']);
+    Route::resource('/pengguna', ManagementUserController::class);
+
+// Route::post('/user/{id}/profile/update', [ProfileController::class, 'update'])->name('profile.update');
+Route::match(['get', 'post'], '/user/{id}/profile/update', [ProfileController::class, 'update'])->name('profile.update');
+
+Route::get("/home", function(){
+    return view("home");
+});
+
+// acara 7
+Route::group(['namespace'=> 'App\Http\Controllers\Frontend'], function(){
+    Route::resource('home1', HomeController::class);
+});
