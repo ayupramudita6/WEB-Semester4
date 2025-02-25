@@ -12,12 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('detail_profile', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('address');
-            $table->string('nomor_tlp');
-            $table->date('ttl');
-            $table->string('foto');
-            $table->timestamps();
+            $table->bigIncrements('id'); 
+            $table->string('address'); 
+            $table->string('nomor_tlp'); 
+            $table->date('ttl'); 
+            $table->string('foto'); 
+            $table->timestamps(); 
         });
     }
 

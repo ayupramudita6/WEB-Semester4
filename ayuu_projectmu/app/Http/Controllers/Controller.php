@@ -1,17 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
-use Illuminate\Http\Request;
 
-class UserController extends Controller
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Routing\Controller as BaseController;
+
+class Controller extends BaseController
 {
-    public function index()
-    {
-        return "Ini adalah halaman User";
-    }
-
-    public function show()
-    {
-        return "Ini adalah halaman profil user6.";
-    }
+    use AuthorizesRequests, ValidatesRequests;
 }
