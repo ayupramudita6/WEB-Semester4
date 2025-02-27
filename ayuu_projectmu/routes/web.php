@@ -198,3 +198,12 @@ Route::get("/home", function(){
 Route::group(['namespace'=> 'App\Http\Controllers\Frontend'], function(){
     Route::resource('/home', HomeController::class);
 });
+
+//ACARA 8
+Route::group(['namespace'=>'App\Http\Controllers\backend'],function()
+{
+    Route::resource('/dashboard',DashboardController::class);
+});
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
