@@ -207,3 +207,11 @@ Route::group(['namespace'=>'App\Http\Controllers\backend'],function()
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+// Acara 13
+Route::group(['namespace' => 'Backend'], function()
+{
+    Route::resource('dashboard', 'DashboardController');
+    Route::resource('pendidikan','PendidikanController');
+    Route::resource('pengalaman_kerja','PengalamanKerjaController');
+});
