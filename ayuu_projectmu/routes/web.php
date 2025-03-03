@@ -1,9 +1,13 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\ManagementUserController;
-use Illuminate\Http\Request;
+    use App\Http\Controllers\UserController;
+    use App\Http\Controllers\ProfileController;
+    use App\Http\Controllers\ManagementUserController;
+    use App\Http\Controllers\Auth\LoginController;
+    use App\Http\Controllers\backend\PengalamanKerjaController;
+    use App\Http\Controllers\backend\DashboardController;
+    use App\Http\Controllers\backend\PenddikanController;
 
 // Acara 3
 
