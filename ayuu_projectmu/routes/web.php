@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Route;
     use App\Http\Controllers\backend\PengalamanKerjaController;
     use App\Http\Controllers\backend\DashboardController;
     use App\Http\Controllers\backend\PenddikanController;
+    use App\Http\Controllers\SessionController;
+    use  App\Http\Controllers\PegawaiController;
 
 // Acara 3
 
@@ -219,3 +221,11 @@ Route::group(['namespace' => 'Backend'], function()
     Route::resource('pendidikan','PendidikanController');
     Route::resource('pengalaman_kerja','PengalamanKerjaController');
 });
+
+// acara 17
+Route::get('/session/create','SessionController@create');
+Route::get('/session/create','SessionController@show');
+Route::get('/session/delete','SessionController@delete');
+Route::get('/pegawai/{nama}','PegawaiController@index');
+Route::get('/formulir','PegawaiController@formulir');
+Route::post('/formulir/proses','PegawaiController@proses');
