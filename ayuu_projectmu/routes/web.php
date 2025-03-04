@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Route;
     use App\Http\Controllers\backend\DashboardController;
     use App\Http\Controllers\backend\PenddikanController;
     use App\Http\Controllers\SessionController;
-    use  App\Http\Controllers\PegawaiController;
+    use App\Http\Controllers\PegawaiController;
 
 // Acara 3
 
@@ -214,7 +214,7 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-// Acara 13
+// Acara 13 - 16
 Route::group(['namespace' => 'Backend'], function()
 {
     Route::resource('dashboard', 'DashboardController');
