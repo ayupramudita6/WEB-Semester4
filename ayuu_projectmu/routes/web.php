@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Route;
     use App\Http\Controllers\backend\PenddikanController;
     use App\Http\Controllers\SessionController;
     use App\Http\Controllers\PegawaiController;
+    use App\Http\Controllers\CobaController;
+    use App\Http\Controllers\UploadController;
 
 // Acara 3
 
