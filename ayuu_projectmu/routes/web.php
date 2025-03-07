@@ -238,3 +238,5 @@ Route::get('/coberror','CobaController@index');
 // acara 19
 Route::get('/upload','UploadController@upload')->name('upload');
 Route::post('/upload/proses','UploadController@proses_upload')->name('upload.proses');
+Route::post('/upload/resize','UploadController@resize_upload')
+     ->name('upload.resize');
