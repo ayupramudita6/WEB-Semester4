@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Route;
     use App\Http\Controllers\PegawaiController;
     use App\Http\Controllers\CobaController;
     use App\Http\Controllers\UploadController;
+    use App\Http\Controllers\DropzoneController;
 
 // Acara 3
 
@@ -104,20 +105,20 @@ Route::get('/user/{id}/profile', function ($id) {
 })->name('profile');
 
 //Middleware
-Route::middleware(['first', 'second'])->group(function () {
-    Route::get('/', function () {
-        //
-    });
+// Route::middleware(['first', 'second'])->group(function () {
+//     Route::get('/', function () {
+//         //
+//     });
 
-    Route::get('user/profile', function () {
-        //
-    });
-});
+//     Route::get('user/profile', function () {
+//         //
+//     });
+// });
 
-//namespaces
-Route::namespace('Admin')->group(function (){
-    //
-});
+// //namespaces
+// Route::namespace('Admin')->group(function (){
+//     //
+// });
 
 //subdomain routing
 Route::domain('{account}.myapp.com')->group(function (){
@@ -204,17 +205,19 @@ Route::get("/home", function(){
 
 // acara 7
 Route::group(['namespace'=> 'App\Http\Controllers\Frontend'], function(){
-    Route::resource('/home', HomeController::class);
+    Route::resource('/homee', HomeController::class);
 });
 
 //ACARA 8
 Route::group(['namespace'=>'App\Http\Controllers\backend'],function()
-{
-    Route::resource('/dashboard',DashboardController::class);
-});
+    {
+        Route::resource('/dashboardd',DashboardController::class);
+    });
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// acara 9
+Route::get('/home', [App\Http\Controllers\LoginController::class, 'showLoginForm'])->name('home');
+Route::post('/home', [App\Http\Controllers\LoginController::class, 'home']);
 
 // Acara 13 - 16
 Route::group(['namespace' => 'Backend'], function()
@@ -236,7 +239,18 @@ Route::post('/formulir/proses','PegawaiController@proses');
 Route::get('/coberror','CobaController@index');
 
 // acara 19
-Route::get('/upload','UploadController@upload')->name('upload');
-Route::post('/upload/proses','UploadController@proses_upload')->name('upload.proses');
-Route::post('/upload/resize','UploadController@resize_upload')
-     ->name('upload.resize');
+Route::get('/upload', [UploadController::class, 'upload'])->name('upload');
+Route::post('/upload/proses', [UploadController::class, 'proses_upload'])->name('upload.proses');
+Route::post('/upload/resize', [UploadController::class, 'resize_upload'])->name('upload.resize');
+      
+// acara 20
+Route::get('/dropzone', 'UploadController@dropzone')
+    ->name('dropzone');
+Route::post('/dropzone/store', 'UploadController@dropzone_store')
+    ->name('dropzone.store');
+
+// acara 21
+Route::get('/pdf_upload', 'UploadController@pdf_upload')
+     ->name('pdf.upload');
+Route::post('/pdf/store', 'UploadController@pdf_store')
+     ->name('pdf.store');
