@@ -1,4 +1,4 @@
-@extends('backend/layouts.template')
+@extends('backend.layouts.template')
 
 @section('content')
 <section id="main-content">
@@ -7,7 +7,7 @@
             <div class="col-lg-12">
                 <h3 class="page-header"><i class="icon_document_alt"></i> Riwayat Hidup</h3>
                 <ol class="breadcrumb">
-                    <li><i class="fa fa-home"></i><a href="{{ url('dashboard') }}">Home</a></li>
+                    <li><i class="fa fa-home"></i> <a href="{{ url('dashboard') }}">Home</a></li>
                     <li><i class="icon_document_alt"></i>Riwayat Hidup</li>
                     <li><i class="fa fa-files-o"></i>Pengalaman Kerja</li>
                 </ol>
@@ -36,13 +36,13 @@
                         
                         <br><br>
                         <table class="table table-striped table-advance table-hover">
-                            <tbody>
-                                <tr>
-                                    <th><i class="icon_bag"></i> Nama</th>
-                                    <th><i class="icon_document"></i> Jabatan</th>
-                                    <th><i class="icon_calendar"></i> Tahun Masuk</th>
-                                    <th><i class="icon_calendar"></i> Tahun Selesai</th>
-                                    <th><i class="icon_cogs"></i> Action</th>
+                        <thead>
+        <tr>
+            <th><i class="icon_bag"></i> Nama</th>
+            <th><i class="icon_document"></i> Jabatan</th>
+            <th><i class="icon_calendar"></i> Tahun Masuk</th>
+            <th><i class="icon_calendar"></i> Tahun Selesai</th>
+            <th><i class="icon_cogs"></i> Action</th>
                                 </tr>
 
                                 @foreach ($pengalaman_kerja as $item)

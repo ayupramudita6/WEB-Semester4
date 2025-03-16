@@ -1,4 +1,4 @@
-@extends('backend/layouts.template')
+@extends('backend.layouts.template')
 
 @section('content')
 <section id="main-content">
@@ -49,15 +49,16 @@
                                 <label class="control-label col-lg-2">Tingkatan <span class="required">*</span></label>
                                 <div class="col-lg-10">
                                     <select class="form-control m-bot15" name="tingkatan" id="tingkatan" required>
-                                        <option value="TK">TK</option>
-                                        <option value="SD">SD</option>
-                                        <option value="SMP">SMP</option>
-                                        <option value="SMA">SMA</option>
-                                        <option value="SMK">SMK</option>
-                                        <option value="D3">D3</option>
-                                        <option value="S1">S1</option>
-                                        <option value="S2">S2</option>
-                                        <option value="S3">S3</option>
+                                    <option value="1">TK</option>
+<option value="2">SD</option>
+<option value="3">SMP</option>
+<option value="4">SMA</option>
+<option value="5">SMK</option>
+<option value="6">D3</option>
+<option value="7">S1</option>
+<option value="8">S2</option>
+<option value="9">S3</option>
+
                                     </select>
                                 </div>
                             </div>

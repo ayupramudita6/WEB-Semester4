@@ -121,7 +121,7 @@
   <script src="{{ asset('frontend/assets/vendor/purecounter/purecounter_vanilla.js')}}"></script>
   <script src="{{ asset('frontend/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js')}}"></script>
   <script src="{{ asset('frontend/assets/vendor/isotope-layout/isotope.pkgd.min.js')}}"></script>
-  <script src="{{ asset('frontend/ssets/vendor/swiper/swiper-bundle.min.js')}}"></script>
+  <script src="{{ asset('frontend/assets/vendor/swiper/swiper-bundle.min.js')}}"></script>
 
   <!-- Main JS File -->
   <script src="{{ asset('frontend/assets/js/main.js')}}"></script>

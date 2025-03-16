@@ -1,4 +1,4 @@
-@extends('backend/layouts.template')
+@extends('backend.layouts.template')
 
 @section('content')
 <section id="main-content">
@@ -9,7 +9,8 @@
                 <ol class="breadcrumb">
                     <li><i class="fa fa-home"></i><a href="{{ url('dashboard') }}">Home</a></li>
                     <li><i class="icon_document_alt"></i>Riwayat Hidup</li>
-                    <li class="fa fa-files-o">Pendidikan</li>
+                    <li><i class="fa fa-files-o"></i> Pendidikan</li>
+
                 </ol>
             </div>
         </div>
@@ -79,7 +80,7 @@
                                         <form action="{{ route('pendidikan.destroy', $item->id) }}" method="POST" style="display:inline;">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">
+                                            <form action="{{ route('pendidikan.destroy', $item->id) }}" method="POST" style="display:inline;" onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?');">
                                                 <i class="fa fa-trash"></i> Hapus
                                             </button>
                                         </form>

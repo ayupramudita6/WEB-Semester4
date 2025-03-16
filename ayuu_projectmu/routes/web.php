@@ -4,7 +4,10 @@ use Illuminate\Support\Facades\Route;
     use App\Http\Controllers\UserController;
     use App\Http\Controllers\ProfileController;
     use App\Http\Controllers\ManagementUserController;
+    use App\Http\CustomerController;
+    use Illuminate\Support\Facades\Auth;
     use App\Http\Controllers\Auth\LoginController;
+    use App\Http\Controllers\Auth\RegisterController;
     use App\Http\Controllers\backend\PengalamanKerjaController;
     use App\Http\Controllers\backend\DashboardController;
     use App\Http\Controllers\backend\PenddikanController;
@@ -218,25 +221,24 @@ Auth::routes();
 // acara 9
 Route::get('/home', [App\Http\Controllers\LoginController::class, 'showLoginForm'])->name('home');
 Route::post('/home', [App\Http\Controllers\LoginController::class, 'home']);
+Route::get('/registerr', [App\Http\Auth\RegisterController::class, 'showRegistrationForm'])->name('register');
+Route::post('/registerr', [App\Http\Auth\RegisterController::class, 'register']);
 
 // Acara 13 - 16
-Route::group(['namespace' => 'Backend'], function()
-{
-    Route::resource('dashboard', 'DashboardController');
-    Route::resource('pendidikan','PendidikanController');
-    Route::resource('pengalaman_kerja','PengalamanKerjaController');
+Route::group(['namespace' => 'App\Http\Controllers\backend'], function() {
+    Route::resource('dashboard', DashboardController::class);
+    Route::resource('pendidikan', PendidikanController::class);
+    Route::resource('pengalaman_kerja', PengalamanKerjaController::class);
 });
 
-// acara 17
-Route::get('/session/create','SessionController@create');
-Route::get('/session/create','SessionController@show');
-Route::get('/session/delete','SessionController@delete');
-Route::get('/pegawai/{nama}','PegawaiController@index');
-Route::get('/formulir','PegawaiController@formulir');
-Route::post('/formulir/proses','PegawaiController@proses');
-
-// acara 18
-Route::get('/coberror','CobaController@index');
+// acara 17 - 18
+Route::get('session/create', [SessionController::class, 'create']);
+Route::get('session/show', [SessionController::class, 'show']);
+Route::get('session/delete', [SessionController::class, 'delete']);
+Route::get('/pegawai/{ditaa}', [PegawaiController::class, 'index']);
+Route::get('/formulir', [PegawaiController::class, 'formulir']);
+Route::post('/formulir/proses', [PegawaiController::class, 'proses']);
+Route::get('/cobaerror', [CobaController::class, 'index']);
 
 // acara 19
 Route::get('/upload', [UploadController::class, 'upload'])->name('upload');
@@ -244,13 +246,7 @@ Route::post('/upload/proses', [UploadController::class, 'proses_upload'])->name(
 Route::post('/upload/resize', [UploadController::class, 'resize_upload'])->name('upload.resize');
       
 // acara 20
-Route::get('/dropzone', 'UploadController@dropzone')
-    ->name('dropzone');
-Route::post('/dropzone/store', 'UploadController@dropzone_store')
-    ->name('dropzone.store');
-
-// acara 21
-Route::get('/pdf_upload', 'UploadController@pdf_upload')
-     ->name('pdf.upload');
-Route::post('/pdf/store', 'UploadController@pdf_store')
-     ->name('pdf.store');
+Route::get('/dropzone', [UploadController::class, 'dropzone'])->name('dropzone');
+Route::post('/dropzone/store', [UploadController::class, 'dropzone_store'])->name('dropzone.store');
+Route::get('/pdf_upload', [UploadController::class, 'pdf_upload'])->name('pdf.upload');
+Route::post('/pdf/store', [UploadController::class, 'pdf_store'])->name('pdf.store');
