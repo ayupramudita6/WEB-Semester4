@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
     use App\Http\Controllers\CobaController;
     use App\Http\Controllers\UploadController;
     use App\Http\Controllers\DropzoneController;
+    
 
 // Acara 3
 
@@ -218,11 +219,11 @@ Route::group(['namespace'=>'App\Http\Controllers\backend'],function()
     });
 Auth::routes();
 
-// acara 9
-Route::get('/home', [App\Http\Controllers\LoginController::class, 'showLoginForm'])->name('home');
-Route::post('/home', [App\Http\Controllers\LoginController::class, 'home']);
-Route::get('/registerr', [App\Http\Auth\RegisterController::class, 'showRegistrationForm'])->name('register');
-Route::post('/registerr', [App\Http\Auth\RegisterController::class, 'register']);
+// acara 9-11
+Route::get('/home', [App\Http\Controllers\Auth\LoginController::class, 'showLoginForm'])->name('home');
+Route::post('/home', [App\Http\Controllers\Auth\LoginController::class, 'home']);
+Route::get('/registerr', [App\Http\Controllers\Auth\RegisterController::class, 'showRegistrationForm'])->name('register');
+Route::post('/registerr', [App\Http\Controllers\Auth\RegisterController::class, 'register']);
 
 // Acara 13 - 16
 Route::group(['namespace' => 'App\Http\Controllers\backend'], function() {
@@ -250,3 +251,5 @@ Route::get('/dropzone', [UploadController::class, 'dropzone'])->name('dropzone')
 Route::post('/dropzone/store', [UploadController::class, 'dropzone_store'])->name('dropzone.store');
 Route::get('/pdf_upload', [UploadController::class, 'pdf_upload'])->name('pdf.upload');
 Route::post('/pdf/store', [UploadController::class, 'pdf_store'])->name('pdf.store');
+
+
