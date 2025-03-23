@@ -24,7 +24,9 @@ class SessionController extends Controller
    //menghapus session
    public function delete(Request $request) {
     if($request->session()->forget('nama')) {
-        echo "Data telah dihapus dari session.";
+        echo $request->session()->get('nama');
+    } else {
+        echo "Berhasil menghapus session.";
     }}
 
 }

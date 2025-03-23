@@ -49,7 +49,7 @@
                                 <label class="control-label col-lg-2">Tingkatan <span class="required">*</span></label>
                                 <div class="col-lg-10">
                                     <select class="form-control m-bot15" name="tingkatan" id="tingkatan" required>
-                                    <option value="1">TK</option>
+<option value="1">TK</option>
 <option value="2">SD</option>
 <option value="3">SMP</option>
 <option value="4">SMA</option>

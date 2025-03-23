@@ -43,7 +43,7 @@
                             <div class="form-group">
                                 <label>Tingkatan</label>
                                 <select name="tingkatan" class="form-control" required>
-                                    <option value="1" {{ $pendidikan->tingkatan == 1 ? 'selected' : '' }}>TK</option>
+                                <option value="1" {{ $pendidikan->tingkatan == 1 ? 'selected' : '' }}>TK</option>
                                     <option value="2" {{ $pendidikan->tingkatan == 2 ? 'selected' : '' }}>SD</option>
                                     <option value="3" {{ $pendidikan->tingkatan == 3 ? 'selected' : '' }}>SMP</option>
                                     <option value="4" {{ $pendidikan->tingkatan == 4 ? 'selected' : '' }}>SMA</option>

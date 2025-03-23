@@ -26,6 +26,7 @@
         var myDropzone = new Dropzone("#pdf-upload", {
             maxFilesize: 1, // Maksimum ukuran file 1 MB
             acceptedFiles: ".pdf", // Hanya menerima file PDF
+            parallelUploads: 3, // Maksimal upload bersamaan
             addRemoveLinks: true,
             autoProcessQueue: false,
             init: function () {

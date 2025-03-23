@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 use Intervention\Image\ImageManager;
 use Intervention\Image\Drivers\Gd\Driver;
 
@@ -48,6 +49,10 @@ class UploadController extends Controller
         return back()->with('success', 'File berhasil diupload!');
     }
 
+public function resize()
+{
+    return view('resize'); 
+}
     
     public function resize_upload(Request $request)
     {

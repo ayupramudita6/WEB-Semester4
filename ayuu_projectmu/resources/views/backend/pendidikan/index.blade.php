@@ -51,7 +51,7 @@
                                 <tr>
                                     <td>{{ $item->nama }}</td>
                                     <td>
-                                        @if ($item->tingkatan == 1)
+                                    @if ($item->tingkatan == 1)
                                             TK
                                         @elseif ($item->tingkatan == 2)
                                             SD
@@ -80,6 +80,7 @@
                                         <form action="{{ route('pendidikan.destroy', $item->id) }}" method="POST" style="display:inline;">
                                             @csrf
                                             @method('DELETE')
+                                            <button type="submit" class="btn btn-danger btn-sm">
                                             <form action="{{ route('pendidikan.destroy', $item->id) }}" method="POST" style="display:inline;" onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?');">
                                                 <i class="fa fa-trash"></i> Hapus
                                             </button>
