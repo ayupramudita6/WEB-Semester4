@@ -159,15 +159,15 @@ Route::get('/user8/{id}/profile', function ($id) {
 })->name('profile');
 
 //Middleware
-Route::middleware(['first', 'second'])->group(function () {
-    Route::get('/', function () {
-        //
-    });
+// Route::middleware(['first', 'second'])->group(function () {
+//     Route::get('/', function () {
+//         //
+//     });
 
-    Route::get('user9/profile', function () {
-        //
-    });
-});
+//     Route::get('user9/profile', function () {
+//         //
+//     });
+// });
 
 //namespaces
 Route::namespace('Admin')->group(function (){
@@ -219,11 +219,8 @@ Route::group(['namespace'=>'App\Http\Controllers\backend'],function()
     });
 Auth::routes();
 
-// acara 9-11
-Route::get('/home', [App\Http\Controllers\Auth\LoginController::class, 'showLoginForm'])->name('home');
-Route::post('/home', [App\Http\Controllers\Auth\LoginController::class, 'home']);
-Route::get('/registerr', [App\Http\Controllers\Auth\RegisterController::class, 'showRegistrationForm'])->name('register');
-Route::post('/registerr', [App\Http\Controllers\Auth\RegisterController::class, 'register']);
+// acara 9-11 login
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 // Acara 13 - 16
 Route::group(['namespace' => 'App\Http\Controllers\backend'], function() {
@@ -239,11 +236,14 @@ Route::get('session/delete', [SessionController::class, 'delete']);
 Route::get('/pegawai/{ditaa}', [PegawaiController::class, 'index']);
 Route::get('/formulir', [PegawaiController::class, 'formulir']);
 Route::post('/formulir/proses', [PegawaiController::class, 'proses']);
-Route::get('/cobaerror', [CobaController::class, 'index']);
+
+// revisi
+Route::get('/cobaeror/{nama}', [CobaController::class, 'index']);
 
 // acara 19
 Route::get('/upload', [UploadController::class, 'upload'])->name('upload');
 Route::post('/upload/proses', [UploadController::class, 'proses_upload'])->name('upload.proses');
+Route::get('/resize', [UploadController::class, 'resize'])->name('resize');
 Route::post('/upload/resize', [UploadController::class, 'resize_upload'])->name('upload.resize');
       
 // acara 20
